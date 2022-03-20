@@ -3,38 +3,26 @@
 Dennis Byington
 CSCE 4110.001
 Term Project
-A-star pathfinding
-search function
+A* pathfinding
+A* search function
 """
 
 
-import heapq
-import numpy as np
-from Node import Node
-
-# --------------------------------------------------
-def getH(currentNode, goalNode):
-    """Manhatten distance"""
-
-    x = abs(currentNode.position[0] - goalNode.position[0])
-    y = abs(currentNode.position[1] - goalNode.position[1])
-    return 10 * (x + y)
-
-# --------------------------------------------------
-#FIXME: update this to my own...
-def path(currentNode):
-    path = []
-    current = currentNode
-    while current is not None:
-        path.append(current.position)
-        current = current.parent
-
-    return path[::-1]
+import heapq                    # binary heap (priority queue) for open list
+import numpy as np              # used to get rows & columns from grid
+from Node import Node           # node class for grid
+from aStar_getH import getH     # heuristic function
+from aStar_getPath import path  # return A* path
 
 
 # --------------------------------------------------
 def aStar_search(grid, start, stop):
-    """update..."""
+    """
+    - accepts grid, start position, and goal position
+    - performs A* search (steps are described in comments)
+    - returns path (start -> goal) if found
+        - returns error message if not
+    """
 
     # get # of rows & columns in grid
     rows, columns = np.shape(grid)
