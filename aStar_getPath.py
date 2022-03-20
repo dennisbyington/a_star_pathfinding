@@ -11,9 +11,8 @@ get A* path
 def path(goal):
     """
     - accepts goal node which was found in aStar_search
-    - returns that path, but reversed
-
     - traces route from goal node to start by traversing parents
+    - returns that path, but reversed
     """
 
     path = []
