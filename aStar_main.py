@@ -12,7 +12,7 @@ TODO: ------------------------------------------------------------
 all files
     TODO: run through linter and formatter
     TODO: remove all debugging statements
-    TODO: smooth variables names and flow -> make readable and my own
+    TODO: smooth variables names and flow -> make readable and my own *********************************
 
 aStar_main.py
     TODO: still need to update instructions, readme, and final report
@@ -77,8 +77,8 @@ def main():
     # print(f'aStar path = {path}')
 
     # loop through each position in path & assign that grid position a numerical path (1, 2, 3...goal)
-    for i, p in enumerate(path):
-        grid[p[0]][p[1]] = i + 1
+    for index, p in enumerate(path):
+        grid[p[0]][p[1]] = index + 1
 
     # print maze
     print(f'A* search results:')
