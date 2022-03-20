@@ -11,7 +11,10 @@ import argparse         # parse command line args
 
 # --------------------------------------------------
 def get_args():
-    """parse command line args and provide a help description"""
+    """
+    - accepts nothing and returns command line arguments in parsed form
+    - provides help description to command line
+    """
 
     parser = argparse.ArgumentParser(
         description = 'A* pathfinding',
