@@ -17,7 +17,6 @@ all files
 aStar_main.py
     TODO: still need to update instructions, readme, and final report
     TODO: pretty print resulting maze (*and visited nodes*)
-    TODO: update all block quotes below function defs
 
 aStar_args.py
     TODO: add argparse options/flags
@@ -25,7 +24,6 @@ aStar_args.py
     
 aStar_search.py
     TODO: update moves to allow for diagonal moves (ties into options/flags && will require refactoring algo)
-    TODO: update block quotes below function def
     TODO: fix error message not being reached if no path available...
     
 aStar_getH.py
