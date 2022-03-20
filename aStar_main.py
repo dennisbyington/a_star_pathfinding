@@ -15,7 +15,7 @@ all files
     TODO: remove all debugging statements
     TODO: smooth variables names and flow -> make readable and my own
 
-astar.py
+aStar_main.py
     TODO: still need to update instructions, readme, and final report
     TODO: eventually randomize the barriers
     TODO: move argparse into separate .py file
@@ -27,7 +27,7 @@ astar_search.py
     TODO: update moves to allow for diagonal moves (ties into options/flags && will require refactoring algo)
 
 Node.py
-    none... 
+    none...
 
 TODO: ------------------------------------------------------------
 """
