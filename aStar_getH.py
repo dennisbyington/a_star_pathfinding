@@ -7,10 +7,12 @@ A-star pathfinding
 Heuristic function
 """
 
-
 # --------------------------------------------------
 def getH(current, goal):
-    """Manhattan distance: accepts two nodes, calculates and returns the Manhattan distance"""
+    """
+    - accepts current position and goal position
+    - returns the calculated heuristic
+    """
 
     # Manhattan
     x = abs(current.position[0] - goal.position[0])
