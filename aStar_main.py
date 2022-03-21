@@ -9,11 +9,6 @@ main function
 """
 TODO: ------------------------------------------------------------
 
-current iw:  **********************************************
-    adding in heuristic option 
-        currently in getH:
-            need to define each option, then update return values based on option...
-
 all files
     TODO: run through linter and formatter
     TODO: remove all debugging statements
@@ -25,7 +20,6 @@ aStar_main.py
 aStar_args.py
     TODO: add argparse options/flags       
         # option to restrict movement to 4 or 8
-        # option to set heuristic: Dijkstra’s algo, Manhattan distance, or Diagonal distance
         # option to adjust barrier % (this wasn't part of my proposal...)
         
 aStar_search.py
