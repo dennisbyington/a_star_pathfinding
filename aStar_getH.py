@@ -20,14 +20,15 @@ def getH(current, goal, hFlag):
 
     # Manhattan: best for square grids, 4 way moves
     if hFlag == 1:
-        h = 10 * (x + y)
+        return 10 * (x + y)
 
     # Diagonal: best for square grid, 8 way moves
     if hFlag == 2:
-        h = 10 * (x + y) + (14 - 2 * 10) * min(x, y)
+        return 10 * (x + y) + (14 - 2 * 10) * min(x, y)
 
     # Dijkstra
     if hFlag == 3:
-        h = 0
+        return 0
 
-    return h
+    # if here, error due to invalid hFlag
+    return -1
