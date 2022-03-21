@@ -49,7 +49,6 @@ def aStar_search(grid, startPos, stopPos, hFlag):
              ( 0,  1))   # right
 
     print(f'Beginning A* search...')
-    # TODO: print H option here...
     if hFlag == 1:
         print(f'Using Manhattan heuristic...')
     if hFlag == 2:
