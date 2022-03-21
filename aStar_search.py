@@ -16,7 +16,7 @@ from aStar_getPath import path  # return A* path
 
 
 # --------------------------------------------------
-def aStar_search(grid, startPos, stopPos):
+def aStar_search(grid, startPos, stopPos, hFlag):
     """
     - accepts grid, start position, and goal position
     - performs A* search (steps are described in comments)
@@ -49,6 +49,14 @@ def aStar_search(grid, startPos, stopPos):
              ( 0,  1))   # right
 
     print(f'Beginning A* search...')
+    # TODO: print H option here...
+    if hFlag == 1:
+        print(f'Using Manhattan heuristic...')
+    if hFlag == 2:
+        print(f'Using Diagonal heuristic...')
+    if hFlag == 3:
+        print(f'Using Dijkstra heuristic...')
+
 
     # while open-list not empty
     while(openList):
@@ -75,7 +83,7 @@ def aStar_search(grid, startPos, stopPos):
             print("Goal found, returning...\n")
             return path(current)
 
-        # list to hold nodes to check TODO: rename?
+        # list to hold nodes to check
         nodesToCheck = []
 
         # check possible moves for barrier & inbounds --> if not, append to nodesToCheck
@@ -130,7 +138,7 @@ def aStar_search(grid, startPos, stopPos):
             node.parent = current
             # TODO: update this to account for diag moves @ 14 cost
             node.g = current.g + 10
-            node.h = getH(node, goal)
+            node.h = getH(node, goal, hFlag)
             node.f = node.g + node.h
             # ----------------------------------------------------------------------
             # print(f'{node.position}: f = g + h: {node.f} = {node.g} + {node.h}')
@@ -157,7 +165,8 @@ def aStar_search(grid, startPos, stopPos):
         # ----------------------------------------------------------------------
 
     # if here while loop has broken -> openList is empty and goal is not found
-    print(f'Error.  Goal not found.  No path available.')
+    return -1
+
 
 
 
