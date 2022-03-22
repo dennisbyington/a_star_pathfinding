@@ -9,19 +9,20 @@ main function
 """
 TODO: ------------------------------------------------------------
 
+CURRENT NOTES: right now it's assigning g=14 to everything
+                    trying to figure out why...
+
 CURRENT IW: updating moves to allow 8
     - update arg parse ------------------------------------------------- DONE
     - pass into search ------------------------------------------------- DONE
-        - if == 8 --> add diagonals into moves[]
-        - print move # usage message 
-        - IN SEARCH: ** may need to update node **
-            - update barrier check
-                - if directly l/r, this removes ul/dl (or ur/dr)
-                - if directly u/d, this removes ul/dr (or dl/dr)
-                - if in corners, only affects itself 
-            - update g-cost
-                - check if diagonal and use 14
-                - will also need to update getH (check all functions)
+        - if == 8 --> add diagonals into moves[] ----------------------- DONE
+        - print move # usage message ----------------------------------- DONE
+        - update barrier check ( ** do this "safely" ** ) -------------- DONE
+            - if directly l/r, this removes ul/dl (or ur/dr) ----------- DONE
+            - if directly u/d, this removes ul/dr (or dl/dr) ----------- DONE
+            - if in corners, only affects itself ----------------------- DONe
+        - update g-cost ------------------------------------------------ DONE
+            - check if diagonal and use 14 ----------------------------- DONE
 
 all files
     TODO: run through linter and formatter
@@ -32,11 +33,10 @@ aStar_main.py
 
 aStar_args.py
     TODO: add argparse options/flags       
-        # option to restrict movement to 4 or 8
         # option to adjust barrier % (this wasn't part of my proposal...)
         
 aStar_search.py
-    TODO: update moves to allow for diagonal moves (ties into options/flags && will require refactoring algo)
+    none
     
 aStar_getH.py
     none
@@ -96,9 +96,16 @@ def main():
              ["-", "-", "-", "x", "-", "-", "-", "-", "-", "-"],
              ["-", "-", "-", "x", "-", "-", "-", "-", "-", "-"]])
 
+    # grid = ([["-", "x", "-", "-", "-"],
+    #          ["-", "x", "-", "-", "-"],
+    #          ["-", "-", "-", "-", "-"],
+    #          ["-", "-", "-", "-", "-"],
+    #          ["-", "-", "-", "-", "-"]])
+
     # set start and goal
     start = (0, 0)
     goal =  (9, 9)
+    #goal = (4, 4)
 
     # call search function (returns path or error message)
     closedList, path = search(grid, start, goal, hFlag, moveFlag)
