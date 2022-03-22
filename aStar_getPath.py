@@ -7,6 +7,7 @@ A-star pathfinding
 get A* path
 """
 
+
 # --------------------------------------------------
 def path(goal):
     """

@@ -7,6 +7,7 @@ A-star pathfinding
 node class
 """
 
+
 # --------------------------------------------------
 class Node:
     """

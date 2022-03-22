@@ -7,6 +7,7 @@ A* pathfinding
 A* search function
 """
 
+
 # --------------------------------------------------
 def printResults(grid, path, closedList):
     """

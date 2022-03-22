@@ -7,6 +7,7 @@ A-star pathfinding
 Heuristic function
 """
 
+
 # --------------------------------------------------
 def getH(current, goal, hFlag):
     """

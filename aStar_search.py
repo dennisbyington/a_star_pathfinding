@@ -13,6 +13,7 @@ from Node import Node           # node class for grid
 from aStar_getH import getH     # heuristic function
 from aStar_getPath import path  # return A* path
 
+
 # --------------------------------------------------
 def aStar_search(grid, startPos, stopPos, hFlag, moveFlag):
     """
@@ -94,7 +95,7 @@ def aStar_search(grid, startPos, stopPos, hFlag, moveFlag):
             position[1] >= columns):    # oob r
                 continue
 
-            # if barrier --> ignore (also remove diagonals if applicable)
+            # if barrier --> ignore (also remove diagonals if 8-way moves selected)
             if (grid[position[0]][position[1]] == "x"):
                 # if up, remove upleft & upright
                 if move[2] == "u":
@@ -133,6 +134,7 @@ def aStar_search(grid, startPos, stopPos, hFlag, moveFlag):
             newNode = Node(current, position)
             nodesToCheck.append(newNode)
 
+        # now have list of nodes to check
         # look at each node: if in closed list (ignore), if not on open list (add), if better path (update)
         for node in nodesToCheck:
             # if in closed list --> ignore
@@ -140,8 +142,6 @@ def aStar_search(grid, startPos, stopPos, hFlag, moveFlag):
                 continue
 
             # populate node and check open list
-            node.parent = current
-
             # check for diagonal & assign appropriate g-cost
             diag = (node.position[0] - current.position[0], node.position[1] - current.position[1])
             diaganols = [(-1, -1), (-1, 1), (1, -1), (1, 1)]
@@ -152,15 +152,16 @@ def aStar_search(grid, startPos, stopPos, hFlag, moveFlag):
 
             node.h = getH(node, goal, hFlag)
             node.f = node.g + node.h
+            node.parent = current
 
-            # if already in open list & current g is higher, ignore
+            # if already in open list with lower g -> ignore
             if len([n for n in openList if node.position == n.position and node.g >= n.g]) > 0:
                 continue
 
             # if here, add to open list
             heapq.heappush(openList, node)
 
-    # if here while loop has broken -> openList is empty and goal is not found
+    # if here, while loop has broken -> openList is empty and goal is not found
     return closedList, -1
 
 
