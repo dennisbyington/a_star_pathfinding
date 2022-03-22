@@ -14,7 +14,7 @@ from aStar_getH import getH     # heuristic function
 from aStar_getPath import path  # return A* path
 
 # --------------------------------------------------
-def aStar_search(grid, startPos, stopPos, hFlag):
+def aStar_search(grid, startPos, stopPos, hFlag, moveFlag):
     """
     - accepts grid, start position, and goal position
     - performs A* search (steps are described in comments)
@@ -40,7 +40,6 @@ def aStar_search(grid, startPos, stopPos, hFlag):
     heapq.heappush(openList, start)
 
     # set possible moves
-    # TODO: if flag set, add the four diagonal moves
     moves = ((-1,  0),   # up
              ( 1,  0),   # down
              ( 0, -1),   # left
@@ -70,7 +69,6 @@ def aStar_search(grid, startPos, stopPos, hFlag):
         # pop lowest f-cost off the open-list / add to closed list
         current = heapq.heappop(openList)
         closedList.append(current)
-
         # ----------------------------------------------------------------------
         # print(f'\ncurrent: {current.position}')
         # ----------------------------------------------------------------------
@@ -105,11 +103,11 @@ def aStar_search(grid, startPos, stopPos, hFlag):
                 continue
 
             # # if here, walkable and in bounds -> create node and append to nodesToCheck
+            newNode = Node(current, position)
+            nodesToCheck.append(newNode)
             # ----------------------------------------------------------------------
             # print(f'{position[0]:2} {position[1]:2} : adding to nodesToCheck')
             # ----------------------------------------------------------------------
-            newNode = Node(current, position)
-            nodesToCheck.append(newNode)
 
         # ----------------------------------------------------------------------
         # print(f'\nnodesToCheck: ', end = "")

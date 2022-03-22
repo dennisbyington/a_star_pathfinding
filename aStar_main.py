@@ -10,11 +10,11 @@ main function
 TODO: ------------------------------------------------------------
 
 CURRENT IW: updating moves to allow 8
-    - update arg parse 
-    - pass into search
+    - update arg parse ------------------------------------------------- DONE
+    - pass into search ------------------------------------------------- DONE
         - if == 8 --> add diagonals into moves[]
         - print move # usage message 
-        - IN SEARCH:
+        - IN SEARCH: ** may need to update node **
             - update barrier check
                 - if directly l/r, this removes ul/dl (or ur/dr)
                 - if directly u/d, this removes ul/dr (or dl/dr)
@@ -70,8 +70,10 @@ def main():
     # get command line arguments & save heuristic option
     args = get_args()
     hFlag = args.Heuristic
+    moveFlag = args.moves
 
     # define the grid
+    # ---------------------------------------------------------
     # grid = np.array([[0, -1, 0,  0, 0,  0,  0,  0, 0, 0],
     #                  [0, -1, 0,  0, 0,  0,  0,  0, 0, 0],
     #                  [0, -1, 0, -1, 0,  0,  0,  0, 0, 0],
@@ -82,7 +84,7 @@ def main():
     #                  [0,  0, 0, -1, 0, -1,  0,  0, 0, 0],
     #                  [0,  0, 0, -1, 0,  0,  0,  0, 0, 0],
     #                  [0,  0, 0, -1, 0,  0,  0,  0, 0, 0]])
-
+    # ---------------------------------------------------------
     grid = ([["-", "x", "-", "-", "-", "-", "-", "-", "-", "-"],
              ["-", "x", "-", "-", "-", "-", "-", "-", "-", "-"],
              ["-", "x", "-", "x", "-", "-", "-", "-", "-", "-"],
@@ -99,7 +101,7 @@ def main():
     goal =  (9, 9)
 
     # call search function (returns path or error message)
-    closedList, path = search(grid, start, goal, hFlag)
+    closedList, path = search(grid, start, goal, hFlag, moveFlag)
 
     # ---------------------------------------------------------
     # for n in closedList:
@@ -111,45 +113,6 @@ def main():
 
     # print results of search
     printResults(grid, path, closedList)
-
-    # # mark visited nodes
-    # for index, n in enumerate(closedList):
-    #     grid[n.position[0]][n.position[1]] = "*"
-    #
-    # # if no path found, display error message and grid
-    # if path == -1:
-    #     print(f'Goal NOT found: No path available!\n')
-    #     print(f'----- A* search results -----')
-    #     print(f'-----------------------------')
-    #     print(f'Unvisited node:  "-"')
-    #     print(f'Visited node:    "*"')
-    #     print(f'Barrier:         "x"\n')
-    #     for row in grid:
-    #         for val in row:
-    #             print(f'{val :>4}', end = "")
-    #         print()
-    #     print()
-    # # if path found, create path in grid, display success message and grid
-    # else:
-    #     # loop through path & mark grid
-    #     for index, p in enumerate(path):
-    #         grid[p[0]][p[1]] = index + 1
-    #
-    #     print("Goal found!\n")
-    #     print(f'----- A* search results -----')
-    #     print(f'-----------------------------')
-    #     print(f'Unvisited node:  "-"')
-    #     print(f'Visited node:    "*"')
-    #     print(f'Barrier:         "x"')
-    #     print(f'Path:            "1 2 3 ..."\n')
-    #     # ---------------------------------------------------------
-    #     # print(str(grid).replace(' [', '').replace('[', '').replace(']', '').replace('-1', ' X'))
-    #     # ---------------------------------------------------------
-    #     for row in grid:
-    #         for val in row:
-    #             print(f'{val: >4}', end = "")
-    #         print()
-    #     print()
 
 
 # --------------------------------------------------
