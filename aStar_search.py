@@ -7,13 +7,11 @@ A* pathfinding
 A* search function
 """
 
-
 import heapq                    # binary heap (priority queue) for open list
 import numpy as np              # used to get rows & columns from grid
 from Node import Node           # node class for grid
 from aStar_getH import getH     # heuristic function
 from aStar_getPath import path  # return A* path
-
 
 # --------------------------------------------------
 def aStar_search(grid, startPos, stopPos, hFlag):
@@ -79,8 +77,7 @@ def aStar_search(grid, startPos, stopPos, hFlag):
 
         # if goal -> stop search
         if current == goal:
-            print("Goal found, returning...\n")
-            return path(current)
+            return closedList, path(current)
 
         # list to hold nodes to check
         nodesToCheck = []
@@ -101,7 +98,9 @@ def aStar_search(grid, startPos, stopPos, hFlag):
                 continue
 
             # if barrier --> ignore
-            if (grid[position] != 0):
+            # if (grid[position] != 0):
+            #if (grid[position[0]][position[1]] != 0):
+            if (grid[position[0]][position[1]] != "-"):
                 # ----------------------------------------------------------------------
                 # print(f'{position[0]:2} {position[1]:2} : barrier')
                 # ----------------------------------------------------------------------
@@ -164,7 +163,7 @@ def aStar_search(grid, startPos, stopPos, hFlag):
         # ----------------------------------------------------------------------
 
     # if here while loop has broken -> openList is empty and goal is not found
-    return -1
+    return closedList, -1
 
 
 
