@@ -20,18 +20,19 @@ def get_args():
         description = 'A* pathfinding',
         formatter_class = argparse.ArgumentDefaultsHelpFormatter)
 
-    # set heuristic options
+    # heuristic option
     parser.add_argument('-H', '--Heuristic',
                         metavar = 'int',
                         type = int,
                         default = 1,
-                        help = "Heuristic: 1: Manhattan, 2: Diagonal, 3: Dijkstra's")
+                        help = "Heuristic --> [1]: Manhattan, [2]: Diagonal, [3]: Dijkstra's")
 
-    # TODO:
-    # movement
-    # numeric flag
-        # 4 = 4 way (default)
-        # 8 = 8 way
+    # move option
+    parser.add_argument('-m', '--moves',
+                        metavar = 'int',
+                        type = int,
+                        default = 4,
+                        help = "Available moves --> [4]: Up Down Left Right, [8]: adds diagonals")
 
     args = parser.parse_args()
 
@@ -39,10 +40,8 @@ def get_args():
     if not 1 <= args.Heuristic <= 3:
         parser.error(f'-H --Heuristic "{args.Heuristic}" must be between 1 and 3')
 
-    # TODO: add range check & error message (moves)
-
-    # TODO: option to adjust barrier % (this wasn't part of my proposal...)
-
-
+    # range check & error message (moves)
+    if (args.moves != 4) and (args.moves != 8):
+        parser.error(f'-m --moves "{args.moves}" must be 4 or 8')
 
     return args

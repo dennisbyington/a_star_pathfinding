@@ -98,8 +98,6 @@ def aStar_search(grid, startPos, stopPos, hFlag):
                 continue
 
             # if barrier --> ignore
-            # if (grid[position] != 0):
-            #if (grid[position[0]][position[1]] != 0):
             if (grid[position[0]][position[1]] != "-"):
                 # ----------------------------------------------------------------------
                 # print(f'{position[0]:2} {position[1]:2} : barrier')

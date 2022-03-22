@@ -9,6 +9,20 @@ main function
 """
 TODO: ------------------------------------------------------------
 
+CURRENT IW: updating moves to allow 8
+    - update arg parse 
+    - pass into search
+        - if == 8 --> add diagonals into moves[]
+        - print move # usage message 
+        - IN SEARCH:
+            - update barrier check
+                - if directly l/r, this removes ul/dl (or ur/dr)
+                - if directly u/d, this removes ul/dr (or dl/dr)
+                - if in corners, only affects itself 
+            - update g-cost
+                - check if diagonal and use 14
+                - will also need to update getH (check all functions)
+
 all files
     TODO: run through linter and formatter
     TODO: remove all debugging statements
