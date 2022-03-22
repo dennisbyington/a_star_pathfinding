@@ -51,6 +51,8 @@ def aStar_search(grid, startPos, stopPos, hFlag, moveFlag):
         print(f'Using 4-way moves...')
     if moveFlag == 8:
         print(f'Using 8-way moves...')
+    print(f'start node: {start.position}')
+    print(f'goal node:  {goal.position}')
 
     # while open-list not empty
     while(openList):
@@ -70,8 +72,6 @@ def aStar_search(grid, startPos, stopPos, hFlag, moveFlag):
                      ( 1, -1, "dl"),  # down left
                      ( 1,  1, "dr")]  # down right
 
-        diaganols = [(-1, -1), (-1, 1), (1, -1), (1, 1)]
-
         # pop lowest f-cost off the open-list / add to closed list
         current = heapq.heappop(openList)
         closedList.append(current)
@@ -83,7 +83,7 @@ def aStar_search(grid, startPos, stopPos, hFlag, moveFlag):
         # list to hold nodes to check
         nodesToCheck = []
 
-        # check possible moves for barrier & inbounds --> if not, append to nodesToCheck
+        # check possible moves for walkable & barrier --> if not either, append to nodesToCheck
         for move in moves:
             position = (current.position[0] + move[0], current.position[1] + move[1])
 
@@ -94,7 +94,7 @@ def aStar_search(grid, startPos, stopPos, hFlag, moveFlag):
             position[1] >= columns):    # oob r
                 continue
 
-            # if barrier --> ignore
+            # if barrier --> ignore (also remove diagonals if applicable)
             if (grid[position[0]][position[1]] == "x"):
                 # if up, remove upleft & upright
                 if move[2] == "u":
@@ -133,7 +133,7 @@ def aStar_search(grid, startPos, stopPos, hFlag, moveFlag):
             newNode = Node(current, position)
             nodesToCheck.append(newNode)
 
-        # look at each node for closed list (ignore), not on open list (add), better path (update)
+        # look at each node: if in closed list (ignore), if not on open list (add), if better path (update)
         for node in nodesToCheck:
             # if in closed list --> ignore
             if node in closedList:
@@ -144,6 +144,7 @@ def aStar_search(grid, startPos, stopPos, hFlag, moveFlag):
 
             # check for diagonal & assign appropriate g-cost
             diag = (node.position[0] - current.position[0], node.position[1] - current.position[1])
+            diaganols = [(-1, -1), (-1, 1), (1, -1), (1, 1)]
             if diag in diaganols:
                 node.g = current.g + 14
             else: # not diag
