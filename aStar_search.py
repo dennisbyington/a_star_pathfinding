@@ -9,7 +9,7 @@ A* search function
 
 import heapq                    # binary heap (priority queue) for open list
 import numpy as np              # used to get rows & columns from grid
-from Node import Node           # node class for grid
+from aStar_Node import Node     # node class for grid
 from aStar_getH import getH     # heuristic function
 from aStar_getPath import path  # return A* path
 
