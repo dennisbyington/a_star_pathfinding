@@ -6,26 +6,6 @@ Term Project
 A-star pathfinding
 main function
 """
-"""
-TODO: ------------------------------------------------------------
-
---> add option to adjust barrier % (this wasn't part of my proposal...)
-    1 - add arg parse -------------------------------------- DONE
-        0 = default ---------------------------------------- DONE
-        check 0 <= x <= 0.5  ------------------------------- DONE
-    2 - create the maze in main
-            if 0: use standard maze (default)
-            if 0.1 - 0.5: use randomly generate barriers
-                
-misc:
-    remove all debugging statements
-    check on cse machines
-    update instructions, readme, and final report (2500 words double spaced)
-        don't forget to cite tiny python projects...
-        cite all websites..
-    
-TODO: ------------------------------------------------------------
-"""
 
 from aStar_args import get_args                                 # parse command line args
 from aStar_search import aStar_search as search                 # aStar search
@@ -46,11 +26,6 @@ def main():
     args = get_args()
     hFlag = args.Heuristic
     moveFlag = args.moves
-    # barrier = args.barrier
-
-
-    # TODO: if 0: use standard maze (default)
-    # TODO: if 0.1 - 0.5: use randomly generate barriers
 
     # define the grid
     grid = ([["-", "x", "-", "-", "-", "-", "-", "-", "-", "-"],
