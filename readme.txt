@@ -1,19 +1,3 @@
-# ---------------------------------------------------------------------------
-# Name of program: 
-
-aStar_main.py
-
-	# Helper files:
-		
-	   aStar_args.py
-	   aStar_getH.py
-	   aStar_getPath.py
-	   aStar_Node.py
-	   aStar_printResults.py
-	   aStar_search.py
-
-
-# ---------------------------------------------------------------------------
 # Background
 
 This was a term project for my Computer Science Algorithms II course at the University of North Texas, Denton.
