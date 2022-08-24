@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """
 Dennis Byington
-CSCE 4110.001
+dennisbyington@mac.com
+CSCE 4110.001 (Algorithms)
 Term Project
 A-star pathfinding
-main function
+Get arguments function
 """
 
 import argparse         # parse command line args
@@ -18,22 +19,22 @@ def get_args():
     """
 
     parser = argparse.ArgumentParser(
-        description = 'A* pathfinding',
-        formatter_class = argparse.ArgumentDefaultsHelpFormatter)
+        description='A* pathfinding',
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     # heuristic option
     parser.add_argument('-H', '--Heuristic',
-                        metavar = 'int',
-                        type = int,
-                        default = 1,
-                        help = "Heuristic --> [1]: Manhattan, [2]: Diagonal, [3]: Dijkstra's")
+                        metavar='int',
+                        type=int,
+                        default=1,
+                        help="Heuristic --> [1]: Manhattan, [2]: Diagonal, [3]: Dijkstra's")
 
     # move option
     parser.add_argument('-m', '--moves',
-                        metavar = 'int',
-                        type = int,
-                        default = 4,
-                        help = "Available moves --> [4]: Up Down Left Right, [8]: adds diagonals")
+                        metavar='int',
+                        type=int,
+                        default=4,
+                        help="Available moves --> [4]: Up Down Left Right, [8]: adds diagonals")
 
     args = parser.parse_args()
 

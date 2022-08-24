@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """
 Dennis Byington
-CSCE 4110.001
+dennisbyington@mac.com
+CSCE 4110.001 (Algorithms)
 Term Project
-A* pathfinding
-A* search function
+A-star pathfinding
+Print results function
 """
 
 

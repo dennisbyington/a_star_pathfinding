@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """
 Dennis Byington
-CSCE 4110.001
+dennisbyington@mac.com
+CSCE 4110.001 (Algorithms)
 Term Project
 A-star pathfinding
-node class
+Node class
 """
 
 
@@ -17,7 +18,7 @@ class Node:
     """
 
     # constructor
-    def __init__(self, parent = None, position = None):
+    def __init__(self, parent=None, position=None):
         self.parent = parent
         self.position = position
         self.g = 0

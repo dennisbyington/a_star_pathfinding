@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """
 Dennis Byington
-CSCE 4110.001
+dennisbyington@mac.com
+CSCE 4110.001 (Algorithms)
 Term Project
-A* pathfinding
+A-star pathfinding
 A* search function
 """
 
@@ -163,7 +164,6 @@ def aStar_search(grid, startPos, stopPos, hFlag, moveFlag):
 
     # if here, while loop has broken -> openList is empty and goal is not found
     return closedList, -1
-
 
 
 
