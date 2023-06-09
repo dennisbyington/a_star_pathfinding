@@ -13,9 +13,7 @@ import numpy as np                          # used to get rows & columns from gr
 from aStar_Node import Node                 # node class for grid
 from aStar_getH import getH                 # heuristic function
 from aStar_getPath import get_path          # return A* path
-from aStar_printResults import print_grid   # print grid
-import time
-import os
+from aStar_printResults import print_step   # print grid
 
 
 # --------------------------------------------------
@@ -79,10 +77,7 @@ def aStar_search(grid, start_pos, stop_pos, heuristic, moves, step):
 
         # print step (if required)
         if step:
-            os.system('clear')
-            print('\n\n\nSearching...\n\n\n\n\n')
-            print_grid(grid)
-            time.sleep(0.1)
+            print_step(grid)
 
         # if goal -> stop search
         if current == goal:
@@ -174,6 +169,4 @@ def aStar_search(grid, start_pos, stop_pos, heuristic, moves, step):
             heapq.heappush(openList, node)
 
     # if here, while loop has broken -> openList is empty and goal is not found
-    # TODO only return grid (do not update path first)
-    # TODO figure out how to mark grid when "no path found"
     return grid

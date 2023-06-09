@@ -8,6 +8,7 @@ A-star pathfinding
 Print results function
 """
 
+import time
 import os
 
 
@@ -26,6 +27,21 @@ def print_grid(grid):
             print(f'{val: >4}', end="")
         print()
     print()
+
+
+def print_step(grid):
+    
+    os.system('clear')
+
+    print('Searching...\n')
+    print('----- A* search steps -------')
+    print('-----------------------------')
+    print('Unvisited node:  "-"')
+    print('Visited node:    "*"')
+    print('Barrier:         "x"\n\n')
+    
+    print_grid(grid)
+    time.sleep(0.1)
 
 
 def print_results(grid, goal):
