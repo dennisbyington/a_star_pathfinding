@@ -10,11 +10,14 @@ get A* path
 
 
 # --------------------------------------------------
-def path(goal):
-    """
-    - accepts goal node which was found in aStar_search
-    - traces route from goal node to start by traversing parents
-    - returns that path, but reversed
+def get_path(goal):
+    """ Traces route from goal node to start by traversing parents 
+    
+    Args:
+        goal: node which was found in aStar_search
+    
+    Returns:
+        path from goal node to start node
     """
 
     path = []
@@ -26,4 +29,4 @@ def path(goal):
         current = current.parent
 
     # reverse path and return
-    return path[ : :-1]
+    return path[ : :-1]         # noqa: E201

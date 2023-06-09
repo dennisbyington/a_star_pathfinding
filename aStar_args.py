@@ -13,11 +13,10 @@ import argparse         # parse command line args
 
 # --------------------------------------------------
 def get_args():
-    """
-    - Parses command line arguemnts & provides help description to command line
+    """ Parses command line arguemnts & provides help description to command line
 
     Returns:
-        args - argparse object which holds command line arguments in parsed form
+        args: argparse object which holds command line arguments in parsed form
     """
 
     parser = argparse.ArgumentParser(
@@ -38,14 +37,17 @@ def get_args():
                         default=4,
                         help="Available moves --> [4]: Up Down Left Right, [8]: adds diagonals")
 
-    # barriers percentage
+    # barriers percentage option
     parser.add_argument('-b', '--barriers',
                         metavar='float',
                         type=float,
                         default=0.5,
                         help="Percentage of board to fill with randomly placed barriers: 0.00 - 1.00")  # noqa: E501
 
-    # TODO add display flag (grid printing at each step of the search)
+    # display search step-by-step flag 
+    parser.add_argument('-s', '--step',                         
+                        action='store_true',  # default = false
+                        help='Display search step-by-step')                
 
     args = parser.parse_args()
 

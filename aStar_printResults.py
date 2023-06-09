@@ -14,9 +14,10 @@ Print results function
 #       may need to pass in stop position to check if path found
 #       if stop position == '-', then no path found?
 
+# TODO add in colors (grids: red, visited: ?, path: ?)
 
 def print_grid(grid):
-    """ simply prints the grid 
+    """ Simply prints the grid 
     
     Args: 
         grid: grid from main
@@ -29,7 +30,8 @@ def print_grid(grid):
 
 
 def printResults(grid, path, closedList):
-    """
+    """ Print results of a-star search
+    
     - accepts grid, path (or error), and visited nodes
     - marks visited nodes in grid
     - if successful path, also marks path
@@ -55,9 +57,9 @@ def printResults(grid, path, closedList):
         print()
     # if path found, create path in grid, display success message and grid
     else:
-        # loop through path & mark grid
-        for index, p in enumerate(path):
-            grid[p[0]][p[1]] = index + 1
+        # # loop through path & mark grid
+        # for index, p in enumerate(path):
+        #     grid[p[0]][p[1]] = index + 1
 
         print("Goal found!\n")
         print('----- A* search results -----')
