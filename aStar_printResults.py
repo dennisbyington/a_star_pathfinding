@@ -8,6 +8,8 @@ A-star pathfinding
 Print results function
 """
 
+import os
+
 
 # --------------------------------------------------
 
@@ -34,6 +36,8 @@ def print_results(grid, goal):
         goal: goal position
     """
 
+    os.system('clear')
+
     # if no path found, display error message
     if grid[goal[0]][goal[1]] == "-":  
         print('Goal NOT found: No path available!\n')
@@ -41,7 +45,7 @@ def print_results(grid, goal):
         print('-----------------------------')
         print('Unvisited node:  "-"')
         print('Visited node:    "*"')
-        print('Barrier:         "x"\n')
+        print('Barrier:         "x"\n\n')
         
     # if path found, display success message
     else:

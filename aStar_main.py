@@ -36,6 +36,21 @@ def main():
     # build grid
     grid = build_grid(args.barriers, start, goal)
 
+    # print usage message
+    print('\nBeginning A* search...')
+    if args.Heuristic == 1: 
+        print('Using Manhattan heuristic...')
+    if args.Heuristic == 2:
+        print('Using Diagonal heuristic...')
+    if args.Heuristic == 3:
+        print('Using Dijkstra heuristic...')
+    if args.moves == 4:
+        print('Using 4-way moves...')
+    if args.moves == 8:
+        print('Using 8-way moves...')
+    print(f'start node: {start}')
+    print(f'goal node:  {goal}\n')
+    
     # call search function (returns marked grid)
     grid = search(grid, start, goal, args.Heuristic, args.moves, args.step)
 

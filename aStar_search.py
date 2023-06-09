@@ -28,11 +28,11 @@ def aStar_search(grid, start_pos, stop_pos, heuristic, moves, step):
         start_pos:  starting position of the search
         stop_pos:   goal to reach 
         heuristic:  which hueristic used to calculate h-value
-        moves:      number of moves allowed (cardinal or diagonal as well)
+        moves:      number of moves_list allowed (cardinal or diagonal as well)
         step:       flag to indincate if step-by-step search should be shown
 
     Returns:
-        grid:      grid with visited nodes marked and path shown (if found)
+        grid:       grid with visited nodes marked and path shown (if found)
     """
 
     # get # of rows & columns in grid
@@ -52,40 +52,23 @@ def aStar_search(grid, start_pos, stop_pos, heuristic, moves, step):
     # add start node to open list
     heapq.heappush(openList, start)
 
-    # print usage message
-    print('Beginning A* search...')
-    if heuristic == 1:
-        print('Using Manhattan heuristic...')
-    if heuristic == 2:
-        print('Using Diagonal heuristic...')
-    if heuristic == 3:
-        print('Using Dijkstra heuristic...')
-    if moves == 4:
-        print('Using 4-way moves...')
-    if moves == 8:
-        print('Using 8-way moves...')
-    print(f'start node: {start.position}')
-    print(f'goal node:  {goal.position}')
-
     # while open-list not empty
-    # TODO figure out where to print (if step-by-step flag passed in)
-    #       either here, or at bottom of while loop
     while(openList):
 
-        # set possible moves (default is 4-way)
-        moves = ((-1,  0, "u"),  # up                 # noqa: E241
-                 ( 1,  0, "d"),  # down               # noqa: E201, E241
-                 ( 0, -1, "l"),  # left               # noqa: E201
-                 ( 0,  1, "r"))  # right              # noqa: E201, E241
+        # set possible moves_list (default is 4-way)
+        moves_list = [(-1,  0, "u"),  # up                 # noqa: E241
+                      ( 1,  0, "d"),  # down               # noqa: E201, E241
+                      ( 0, -1, "l"),  # left               # noqa: E201
+                      ( 0,  1, "r")]  # right              # noqa: E201, E241
         if moves == 8:
-            moves = [(-1,  0, "u"),   # up            # noqa: E241
-                     ( 1,  0, "d"),   # down          # noqa: E201, E241
-                     ( 0, -1, "l"),   # left          # noqa: E201
-                     ( 0,  1, "r"),   # right         # noqa: E201, E241
-                     (-1, -1, "ul"),  # up left
-                     (-1,  1, "ur"),  # up right      # noqa: E241
-                     ( 1, -1, "dl"),  # down left     # noqa: E201
-                     ( 1,  1, "dr")]  # down right    # noqa: E201, E241
+            moves_list = [(-1,  0, "u"),   # up            # noqa: E241
+                          ( 1,  0, "d"),   # down          # noqa: E201, E241
+                          ( 0, -1, "l"),   # left          # noqa: E201
+                          ( 0,  1, "r"),   # right         # noqa: E201, E241
+                          (-1, -1, "ul"),  # up left
+                          (-1,  1, "ur"),  # up right      # noqa: E241
+                          ( 1, -1, "dl"),  # down left     # noqa: E201
+                          ( 1,  1, "dr")]  # down right    # noqa: E201, E241
 
         # pop lowest f-cost off the open-list / add to closed list
         current = heapq.heappop(openList)
@@ -93,8 +76,11 @@ def aStar_search(grid, start_pos, stop_pos, heuristic, moves, step):
 
         # update grid with "*" as node added to closed list
         grid[current.position[0]][current.position[1]] = "*"
+
+        # print step (if required)
         if step:
             os.system('clear')
+            print('\n\n\nSearching...\n\n\n\n\n')
             print_grid(grid)
             time.sleep(0.1)
 
@@ -110,7 +96,7 @@ def aStar_search(grid, start_pos, stop_pos, heuristic, moves, step):
 
         # check possible moves for walkable & barrier --> if not either, append to nodesToCheck
         # TODO make this a function call? (pass in grid and move flag? -- return nodesToCheck)
-        for move in moves:
+        for move in moves_list:
             position = (current.position[0] + move[0], current.position[1] + move[1])
 
             # if not walkable --> ignore
@@ -124,33 +110,33 @@ def aStar_search(grid, start_pos, stop_pos, heuristic, moves, step):
             if (grid[position[0]][position[1]] == "x"):
                 # if up, remove upleft & upright
                 if move[2] == "u":
-                    if (-1, -1, "ul") in moves:
-                        moves.remove((-1, -1, "ul"))
-                    if (-1, 1, "ur") in moves:
-                        moves.remove((-1, 1, "ur"))
+                    if (-1, -1, "ul") in moves_list:
+                        moves_list.remove((-1, -1, "ul"))
+                    if (-1, 1, "ur") in moves_list:
+                        moves_list.remove((-1, 1, "ur"))
 
                 # if down, remove downleft & downright
                 if move[2] == "d":
-                    if (1, -1, "dl") in moves:
-                        moves.remove((1, -1, "dl"))
-                    if (1, 1, "dr") in moves:
-                        moves.remove((1, 1, "dr"))
+                    if (1, -1, "dl") in moves_list:
+                        moves_list.remove((1, -1, "dl"))
+                    if (1, 1, "dr") in moves_list:
+                        moves_list.remove((1, 1, "dr"))
 
                 # if left, remove upleft & downleft
                 if move[2] == "l":
-                    if (-1, -1, "ul") in moves:
-                        moves.remove((-1, -1, "ul"))
+                    if (-1, -1, "ul") in moves_list:
+                        moves_list.remove((-1, -1, "ul"))
                         # print(f'removing ul...')
-                    if (1, -1, "dl") in moves:
-                        moves.remove((1, -1, "dl"))
+                    if (1, -1, "dl") in moves_list:
+                        moves_list.remove((1, -1, "dl"))
                         # print(f'removing dl...')
 
                 # if right, remove upright & downright
                 if move[2] == "r":
-                    if (-1, 1, "ur") in moves:
-                        moves.remove((-1, 1, "ur"))
-                    if (1, 1, "dr") in moves:
-                        moves.remove((1, 1, "dr"))
+                    if (-1, 1, "ur") in moves_list:
+                        moves_list.remove((-1, 1, "ur"))
+                    if (1, 1, "dr") in moves_list:
+                        moves_list.remove((1, 1, "dr"))
 
                 # ignore the original barrier node above
                 continue
