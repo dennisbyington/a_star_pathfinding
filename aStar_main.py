@@ -8,11 +8,10 @@ A-star pathfinding
 Main function
 """
 
-from aStar_args import get_args                                 # parse command line args
-from aStar_search import aStar_search as search                 # aStar search
-from build_grid import build_grid as build_grid                 # build grid
-from aStar_printResults import print_grid as print_grid         # print grid
-from aStar_printResults import printResults as printResults     # print results
+from aStar_args import get_args                   # parse command line args
+from aStar_search import aStar_search as search   # aStar search
+from build_grid import build_grid as build_grid   # build grid
+from aStar_printResults import print_results      # print results
 
 
 # --------------------------------------------------
@@ -40,9 +39,8 @@ def main():
     # call search function (returns marked grid)
     grid = search(grid, start, goal, args.Heuristic, args.moves, args.step)
 
-    # TODO need to convert to print_results (figure out how to print if not path found)
     # print results of search
-    print_grid(grid)
+    print_results(grid, goal)
 
 
 # --------------------------------------------------
