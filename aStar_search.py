@@ -73,7 +73,7 @@ def aStar_search(grid, start_pos, stop_pos, heuristic, moves, step):
         closedList.append(current)
 
         # update grid with "*" as node added to closed list
-        grid[current.position[0]][current.position[1]] = "*"
+        grid[current.position[0]][current.position[1]] = "Ø"
 
         # print step (if required)
         if step:

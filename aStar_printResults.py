@@ -14,32 +14,41 @@ import os
 
 # --------------------------------------------------
 
-# TODO add in colors (grids: red, visited: ?, path: ?)
+red = '\033[48;5;196m'   # ansi code to print red background 
+ansi_canx = '\033[0;0m'  # ansi code to stop color printing  
+
 
 def print_grid(grid):
-    """ Simply prints the grid 
+    """ Simply prints the grid (used by step & results print functions below)
     
     Args: 
         grid: grid from main
     """
+
     for row in grid:
         for val in row:
-            print(f'{val: >4}', end="")
+            if val == 'x':  # if barrier, print red background
+                print("   " + red + " " + ansi_canx, end="")  
+            else:
+                print(f'{val: >4}', end="")
         print()
     print()
 
 
 def print_step(grid):
-    
+    """ Prints in-process steps of a-star search   
+
+    Args:
+        grid: grid from in-process a-star search
+    """
     os.system('clear')
 
     print('Searching...\n')
     print('----- A* search steps -------')
     print('-----------------------------')
-    print('Unvisited node:  "-"')
-    print('Visited node:    "*"')
-    print('Barrier:         "x"\n\n')
-    
+    print('Barrier:         ' + red + " " + ansi_canx)   
+    print('Unvisited node:  •')
+    print('Visited node:    Ø\n\n')
     print_grid(grid)
     time.sleep(0.1)
 
@@ -55,24 +64,23 @@ def print_results(grid, goal):
     os.system('clear')
 
     # if no path found, display error message
-    if grid[goal[0]][goal[1]] == "-":  
+    if grid[goal[0]][goal[1]] == "•":  
         print('Goal NOT found: No path available!\n')
         print('----- A* search results -----')
         print('-----------------------------')
-        print('Unvisited node:  "-"')
-        print('Visited node:    "*"')
-        print('Barrier:         "x"\n\n')
+        print('Barrier:         ' + red + " " + ansi_canx)   
+        print('Unvisited node:  •')
+        print('Visited node:    Ø\n\n')
         
     # if path found, display success message
     else:
         print("Goal found!\n")
         print('----- A* search results -----')
         print('-----------------------------')
-        print('Unvisited node:  "-"')
-        print('Visited node:    "*"')
-        print('Barrier:         "x"')
-        print('Path:            "1 2 3 ..."\n')
+        print('Barrier:         ' + red + " " + ansi_canx)   
+        print('Unvisited node:  •')
+        print('Visited node:    Ø')
+        print('Path:            1 2 3...\n')
     
-    # print grid
     print_grid(grid)
     
