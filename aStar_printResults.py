@@ -14,7 +14,7 @@ import os
 
 # --------------------------------------------------
 
-red = '\033[48;5;196m'   # ansi code to print red background 
+ansi_red_bg = '\033[48;5;196m'   # ansi code to print red background 
 ansi_canx = '\033[0;0m'  # ansi code to stop color printing  
 
 
@@ -28,9 +28,9 @@ def print_grid(grid):
     for row in grid:
         for val in row:
             if val == 'x':  # if barrier, print red background
-                print("   " + red + " " + ansi_canx, end="")  
+                print("  " + ansi_red_bg + " " + ansi_canx, end="")  
             else:
-                print(f'{val: >4}', end="")
+                print(f'{val: >3}', end="")
         print()
     print()
 
@@ -46,7 +46,7 @@ def print_step(grid):
     print('Searching...\n')
     print('----- A* search steps -------')
     print('-----------------------------')
-    print('Barrier:         ' + red + " " + ansi_canx)   
+    print('Barrier:         ' + ansi_red_bg + " " + ansi_canx)   
     print('Unvisited node:  •')
     print('Visited node:    Ø\n\n')
     print_grid(grid)
@@ -68,7 +68,7 @@ def print_results(grid, goal):
         print('Goal NOT found: No path available!\n')
         print('----- A* search results -----')
         print('-----------------------------')
-        print('Barrier:         ' + red + " " + ansi_canx)   
+        print('Barrier:         ' + ansi_red_bg + " " + ansi_canx)   
         print('Unvisited node:  •')
         print('Visited node:    Ø\n\n')
         
@@ -77,7 +77,7 @@ def print_results(grid, goal):
         print("Goal found!\n")
         print('----- A* search results -----')
         print('-----------------------------')
-        print('Barrier:         ' + red + " " + ansi_canx)   
+        print('Barrier:         ' + ansi_red_bg + " " + ansi_canx)   
         print('Unvisited node:  •')
         print('Visited node:    Ø')
         print('Path:            1 2 3...\n')
