@@ -9,7 +9,7 @@ Build grid function
 import random
 
 
-def build_grid(barriers, start, stop):
+def build_grid(barriers, random_seed, start, stop):
     """ inserts barriers randomly into grid at given percentage
     
     Args:
@@ -44,6 +44,9 @@ def build_grid(barriers, start, stop):
              ["•", "•", "•", "•", "•", "•", "•", "•", "•", "•"],
              ["•", "•", "•", "•", "•", "•", "•", "•", "•", "•"],
              ["•", "•", "•", "•", "•", "•", "•", "•", "•", "•"]])
+
+    # seed the random module
+    random.seed(random_seed)
 
     # loop over each elelent in grid and replace (at given probability)
     for row_index, row in enumerate(grid):

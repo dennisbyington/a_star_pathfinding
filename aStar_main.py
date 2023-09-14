@@ -34,7 +34,7 @@ def main():
     goal =  (9, 9)  # noqa: E222
 
     # build grid
-    grid = build_grid(args.barriers, start, goal)
+    grid = build_grid(args.barriers, args.random_seed, start, goal)
 
     # print usage message
     print('\nBeginning A* search...')

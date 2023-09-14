@@ -44,6 +44,13 @@ def get_args():
                         default=0.5,
                         help="Percentage of board to fill with randomly placed barriers: 0.00 - 1.00")  # noqa: E501
 
+    # random seed option
+    parser.add_argument('-r', '--random_seed',
+                        metavar='int',
+                        type=int,
+                        default=None,
+                        help="Random seed value") 
+
     # display search step-by-step flag 
     parser.add_argument('-s', '--step',                         
                         action='store_true',  # default = false
