@@ -4,25 +4,25 @@ This was a term project for my Computer Science Algorithms II course at the Univ
 
 
 # ---------------------------------------------------------------------------
-# Description 
+# Description
 
 A-Star Pathfinding (A*) implemented in python
-  
+
   1) Parses command line arguments (if any)
     - default values are 4-way moves with the Manhattan heuristic
-  
-  2) Creates a default grid with barriers
+
+  2) Creates a grid with barriers
 
   3) Performs A* on default grid with assigned allowed moves and heuristic
-  
+
   3) Displays result
-    
+
 
 # ---------------------------------------------------------------------------
 # Dependencies
 
-- Requires Python3 
-- Imports: argparse, numpy, and heapq libraries
+- Requires Python3+
+- Install required libraries via 'pip3 install -r requirements.txt'
 
 
 # ---------------------------------------------------------------------------
@@ -31,12 +31,12 @@ A-Star Pathfinding (A*) implemented in python
   - Invoke the A* program by calling: ./aStar_main.py
     - The default [m] value is 4
     - The default [H] value is 1 (Manhattan)
-        - You may override these by providing alternate values to the -m/--moves or -H/--Heuristic options 
+        - You may override these by providing alternate values to the -m/--moves or -H/--Heuristic options
 
 
 # ---------------------------------------------------------------------------
 # Help
-  
+
 Help can be obtained by including the [-h] option to the program:
 
   ./aStar_main.py -h
@@ -58,14 +58,7 @@ dennisbyington@mac.com
 # ---------------------------------------------------------------------------
 # Bugs
 
-- No known bugs.  However, I am seeking inputs and constructive criticism on areas I can improve. 
-
-
-# ---------------------------------------------------------------------------
-# Future features
-
-- Random barriers 
-    - Will require percentage grid to make barriers (0-100)
+- No known bugs.  However, I am seeking inputs and constructive criticism on areas I can improve.
 
 
 # ---------------------------------------------------------------------------
